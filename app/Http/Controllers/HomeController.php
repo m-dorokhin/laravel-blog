@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App;
 
 class HomeController extends Controller
 {
@@ -13,7 +14,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        //$this->middleware('auth');
     }
 
     /**
@@ -21,8 +22,29 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index($page=1)
     {
-        return view('home');
+        if ($page < 1)
+            $page = 1;
+
+        $count = App\Post::all()->count();
+
+        $take = 10;
+        $count_pages = ceil($count / $take);
+        if ($page > $count_pages)
+            $page = $count_pages;
+
+        $skip = ($page-1)*$take;
+
+        $posts = App\Post::orderBy('created_at', 'desc')
+            ->skip($skip)
+            ->take($take)
+            ->with('user')
+            ->get();
+
+        return view('home')
+            ->with('posts', $posts)
+            ->with('page', $page)
+            ->with('count', $count_pages);
     }
 }

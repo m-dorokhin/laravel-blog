@@ -14,7 +14,23 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    @forelse ($posts as $post)
+                        <div style="border-width: 1px; border-style: solid; border-color: gray; border-radius: 5px; margin: 10px;">
+                            <div style="margin: 10px;"><a href="{--{action('controller@method')}--}"><p>{{$post->title}}</p></a> {{$post->user->name}} {{$post->created_at}}</div>
+                        </div>
+                    @empty
+                        <p>Нет ниодного поста!</p>
+                    @endforelse
+
+                    @if ($page > 1)
+                        <a href="{{ route('home', ['page' => 1]) }}"><<</a>
+                        <a href="{{ route('home', ['page' => $page - 1]) }}"><</a>
+                    @endif
+                    {{$page}}/{{$count}}
+                    @if ($page < $count)
+                        <a href="{{ route('home', ['page' => $page + 1]) }}">></a>
+                        <a href="{{ route('home', ['page' => $count]) }}">>></a>
+                    @endif
                 </div>
             </div>
         </div>
