@@ -9,6 +9,11 @@
                     <div class="card-body">
                         <p>{{ $post->created_at }} <i>{{ $post->user->name }}</i></p>
                         <p>{{ $post->text }}</p>
+                        <p>
+                            @foreach($post->tags as $tag)
+                                <a href="{{ route('tag', ['tag_id' => $tag->id]) }}">{{ $tag->name }}</a>
+                            @endforeach
+                        </p>
                     </div>
                 </div>
             </div>

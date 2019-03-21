@@ -23,6 +23,11 @@ Route::get('/{page?}', 'HomeController@index')
     ->where('page', '[0-9]+')
     ->name('home');
 
+Route::get('/tag/{tag_id}/{page?}', 'HomeController@tag')
+    ->where('tag_id', '[0-9]+')
+    ->where('page', '[0-9]+')
+    ->name('tag');
+
 Route::get('/post/{id}', 'PostController@index')
     ->where('id', '[0-9]+')
     ->name('post');
