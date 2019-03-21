@@ -36,3 +36,7 @@ Route::get('/post/editor',
 Route::post('post/save', 'PostController@save')
     ->name('post_save')
     ->middleware('auth');
+
+Route::post('post/comment', 'PostController@comment')
+    ->name('comment')
+    ->middleware('auth');
