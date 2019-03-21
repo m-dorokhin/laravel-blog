@@ -17,6 +17,17 @@ class PostController extends Controller
         //$this->middleware('auth');
     }
 
+    public function index($id)
+    {
+        $post = Post::find($id);
+
+        if (!isset($post))
+            return abort(404);
+
+        return view('post')
+            ->with('post', $post);
+    }
+
     /**
      * Вывести форму редактора постов
      *

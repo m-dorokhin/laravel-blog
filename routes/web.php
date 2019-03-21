@@ -23,6 +23,10 @@ Route::get('/{page?}', 'HomeController@index')
     ->where('page', '[0-9]+')
     ->name('home');
 
+Route::get('/post/{id}', 'PostController@index')
+    ->where('id', '[0-9]+')
+    ->name('post');
+
 Route::get('/post/editor',
     //function() { return view('editor'); } ) //
       'PostController@editor')

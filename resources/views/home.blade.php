@@ -16,7 +16,7 @@
 
                     @forelse ($posts as $post)
                         <div style="border-width: 1px; border-style: solid; border-color: gray; border-radius: 5px; margin: 10px;">
-                            <div style="margin: 10px;"><a href="{--{action('controller@method')}--}"><p>{{$post->title}}</p></a> {{$post->user->name}} {{$post->created_at}}</div>
+                            <div style="margin: 10px;"><a href="{{ route('post', ['id' => $post->id]) }}"><p>{{$post->title}}</p></a>{{$post->created_at}} <i>{{$post->user->name}}</i></div>
                         </div>
                     @empty
                         <p>Нет ниодного поста!</p>
