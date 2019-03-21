@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use App\Comment;
+use App\Tag;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -56,6 +57,25 @@ class PostController extends Controller
         $post->title = $request->title;
         $post->text = $request->text;
         $request->user()->posts()->save($post);
+
+        $string_tags = array_map('trim', explode(PHP_EOL, $request->tags));
+        $tags = Tag::whereIn('name', $string_tags)->get();
+        if (count($tags) > 0) {
+            $post->tags()->saveMany($tags);
+            $exist_tags = array_column($tags->toArray(), 'name');
+            $notexist_tags = array_diff($string_tags,
+                $exist_tags);
+        }
+        else
+        {
+            $notexist_tags = $string_tags;
+        }
+        foreach ($notexist_tags as $tag)
+        {
+            $new_tag = new Tag();
+            $new_tag->name = $tag;
+            $post->tags()->save($new_tag);
+        }
 
         return redirect('/');
     }

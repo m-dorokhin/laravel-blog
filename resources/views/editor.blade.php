@@ -16,18 +16,27 @@
             {{ csrf_field() }}
 
             <div class="form-group">
-                <label for="task" class="col-sm-3 control-label">Название</label>
+                <label for="post" class="col-sm-3 control-label">Название</label>
 
                 <div class="col-sm-6">
-                    <input type="text" name="title" id="task-title" class="form-controll">
+                    <input type="text" name="title" id="post-title" class="form-controll">
                 </div>
             </div>
 
             <div class="form-group">
-                <lable for="task" class="col-sm-3 control-label">Содержание</lable>
+                <lable for="post" class="col-sm-3 control-label">Содержание</lable>
 
                 <div class="col-sm-6">
-                    <textarea type="text" name="text" id="task-text" class="form-control">
+                    <textarea type="text" name="text" id="post-text" class="form-control">
+                    </textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <lable for="post" class="col-sm-3 control-label">Теги (Одна строчка один тег)</lable>
+
+                <div class="col-sm-6">
+                    <textarea type="text" name="tags" id="post-tags" class="form-control">
                     </textarea>
                 </div>
             </div>
