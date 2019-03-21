@@ -22,3 +22,13 @@ Auth::routes();
 Route::get('/{page?}', 'HomeController@index')
     ->where('page', '[0-9]+')
     ->name('home');
+
+Route::get('/post/editor',
+    //function() { return view('editor'); } ) //
+      'PostController@editor')
+    ->name('editor')
+    ->middleware('auth');
+
+Route::post('post/save', 'PostController@save')
+    ->name('post_save')
+    ->middleware('auth');
