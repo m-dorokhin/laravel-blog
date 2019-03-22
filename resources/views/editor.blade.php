@@ -26,8 +26,8 @@
             <div class="form-group">
                 <lable for="post" class="col-sm-3 control-label">Содержание</lable>
 
-                <div class="col-sm-6">
-                    <textarea type="text" name="text" id="post-text" class="form-control">
+                <div class="col-sm-6" style="max-width: 100%;">
+                    <textarea type="text" name="text" id="post-text" class="form-control" style="height: 300px;">
                     </textarea>
                 </div>
             </div>
@@ -36,7 +36,7 @@
                 <lable for="post" class="col-sm-3 control-label">Теги (Одна строчка один тег)</lable>
 
                 <div class="col-sm-6">
-                    <textarea type="text" name="tags" id="post-tags" class="form-control">
+                    <textarea type="text" name="tags" id="post-tags" class="form-control" style="height: 135px;">
                     </textarea>
                 </div>
             </div>

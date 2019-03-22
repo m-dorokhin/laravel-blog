@@ -31,8 +31,8 @@
                                 <div class="form-group">
                                     <lable for="task" class="col-sm-3 control-label">{{ __('Коментарий') }}</lable>
 
-                                    <div class="col-sm-6">
-                                        <textarea type="text" name="text" id="task-text" class="form-control">
+                                    <div class="col-sm-6" style="max-width: 100%;">
+                                        <textarea type="text" name="text" id="task-text" class="form-control" style="height: 150px;">
                                         </textarea>
                                     </div>
                                 </div>
